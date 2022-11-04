@@ -1,10 +1,10 @@
 import React from "react";
 import SettingsForm from "./SettingsForm";
 
-export default function Settings(props) {
+export default function Settings() {
   return (
     <div>
-      <SettingsForm setColor={props.setColor} color={props.color} />
+      <SettingsForm />
     </div>
   );
 }

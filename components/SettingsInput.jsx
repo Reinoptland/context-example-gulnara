@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { colorContext } from "../pages";
 
-export default function SettingsInput(props) {
+export default function SettingsInput() {
+  const { color, setColor } = useContext(colorContext);
   return (
-    <select
-      onChange={(e) => props.setColor(e.target.value)}
-      value={props.color}
-    >
+    <select onChange={(e) => setColor(e.target.value)} value={color}>
       <option value="red">Red</option>
       <option value="violet">Violet</option>
       <option value="hotpink">Hotpink</option>
