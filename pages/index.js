@@ -7,10 +7,33 @@ import styles from "../styles/Home.module.css";
 
 export const colorContext = createContext({});
 
+// [first, second, third]
+// { pomedoro: 15, shortBreak: 5, longBreak: 15}
+
 export default function Home() {
   const [color, setColor] = useState("red");
+  const [timers, setTimers] = useState({
+    pomedoro: 25,
+    shortBreak: 5,
+    longBreak: 15,
+  });
+
+  function updateTimers(event) {
+    console.log("NEW VALUE:", event.target.value);
+    console.log("WHICH TIMER?:", event.target.name);
+    setTimers({ ...timers, [event.target.name]: event.target.value }); // 15
+    // setTimers({ ...timers, "pomedoro": 15}) // 15
+  }
+
   return (
-    <colorContext.Provider value={{ color: color, setColor: setColor }}>
+    <colorContext.Provider
+      value={{
+        color: color,
+        setColor: setColor,
+        timers: timers,
+        updateTimers: updateTimers,
+      }}
+    >
       <div className={styles.container}>
         <Head>
           <title>Create Next App</title>
